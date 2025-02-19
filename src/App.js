@@ -6,10 +6,10 @@ import Movie from './pages/Movie';
 
 function App() {
   return (
-    <Router basename={<Home/>}>
+    <Router basename='/'>
       <NavBar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="react-filme/" element={<Home />} />
         <Route path="movie/:id" element={<Movie />} />
         <Route path="search" element={<Search />} />
       </Routes>

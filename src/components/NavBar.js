@@ -9,7 +9,7 @@ function NavBar() {
     return (
         <nav id="navbar">
             <h2>
-                <Link to="/">MoviesLib</Link>
+                <Link to="react-filme/">MoviesLib</Link>
             </h2>
             <form>
                 <input type="text" placeholder="Busque um filme" />
