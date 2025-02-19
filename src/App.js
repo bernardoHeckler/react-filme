@@ -9,7 +9,7 @@ function App() {
     <Router basename='/'>
       <NavBar />
       <Routes>
-        <Route path="react-filme/" element={<Home />} />
+        <Route path="react-filme/home" element={<Home />} />
         <Route path="movie/:id" element={<Movie />} />
         <Route path="search" element={<Search />} />
       </Routes>
