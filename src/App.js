@@ -6,7 +6,7 @@ import Movie from './pages/Movie';
 
 function App() {
   return (
-    <Router basename="/Projeto3_Filme_API/movies_lib">
+    <Router basename="/">
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
