@@ -6,7 +6,7 @@ import Movie from './pages/Movie';
 
 function App() {
   return (
-    <Router basename="/">
+    <Router basename={<Home/>}>
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
