@@ -33,7 +33,7 @@ function Home() {
             <h2 className="title">Melhores Filmes:</h2>
             <div className="movies-container">
                 {movies.length === 0 && <p>Carregando...</p>}
-                {movies.length > 0 && movies.map((movies) => <MovieCard key={movies} movie={movies}/>)}
+                {movies.length > 0 && movies.map((movies) => <MovieCard key={movies.id} movie={movies}/>)}
             </div>
         </div>
     );

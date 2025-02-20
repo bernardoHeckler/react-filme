@@ -1,3 +1,5 @@
+//src/pages/Movie.js
+
 function Movie() {
     return (
         <div>
