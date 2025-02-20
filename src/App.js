@@ -9,10 +9,12 @@ function App() {
     <Router basename='/react-filme'>
       <NavBar />
       <Routes>
+        <Route index element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/movie/:id" element={<Movie />} />
         <Route path="/search" element={<Search />} />
       </Routes>
+
     </Router>
   );
 }
