@@ -2,9 +2,7 @@
 
 function Movie() {
     return (
-        <div>
-            <h1>Movie</h1>
-        </div>
+        <div><h1>Movies</h1></div>
     )
 }
 

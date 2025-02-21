@@ -10,19 +10,31 @@ const searchURL = process.env.REACT_APP_SEARCH;
 
 const Search = () => {
     const [searchParams] = useSearchParams();
-
     const [movies, setMovies] = useState([]);
-    const query = searchParams.get("query");
+    const [loading, setLoading] = useState(true);
+    const query = searchParams.get("q");
 
     const getSearchedMovies = async (url) => {
-        const res = await fetch(url);
-        const data = await res.json();
-        setMovies(data.results);
+        try {
+            const res = await fetch(url);
+            if (!res.ok) {
+                throw new Error(`Erro HTTP! Status: ${res.status}`);
+            }
+            const data = await res.json();
+            setMovies(data.results);
+        } catch (error) {
+            console.error("Erro ao buscar os filmes:", error);
+            setMovies([]); // Evita estado indefinido
+        } finally {
+            setLoading(false);
+        }
     };
 
     useEffect(() => {
-        const searchWithQueryURL = `${searchURL}?${apiKey}&query=${query}`;
-        getSearchedMovies(searchWithQueryURL);
+        if (query) {
+            const searchWithQueryURL = `${searchURL}?api_key=${apiKey}&query=${query}`;
+            getSearchedMovies(searchWithQueryURL);
+        }
     }, [query]);
 
     return (
@@ -31,7 +43,8 @@ const Search = () => {
                 Resultados para: <span className="query-text">{query}</span>
             </h2>
             <div className="movies-container">
-                {movies.length === 0 && <p>Carregando...</p>}
+                {loading && <p>Carregando...</p>}
+                {!loading && movies.length === 0 && <p>Nenhum filme encontrado.</p>}
                 {movies.length > 0 && movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
             </div>
         </div>
